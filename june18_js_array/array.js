@@ -5,6 +5,16 @@ console.log(arr1)
 
 const arr=["a","b","c","d"]
 
-arr.forEach(()=>{
-    
+//  const res1= arr.forEach((a,b,c)=>{
+//     return "OK";
+// })
+
+// const res2=arr.map((elem,b,c)=>{
+//     return elem;
+// })
+
+// console.log(res2)
+
+const res3=arr.filter((a,b,c)=>{
+    console.log(a,b,c)
 })
