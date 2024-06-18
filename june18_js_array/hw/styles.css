@@ -6,12 +6,9 @@ body {
 }
 
 .navbar {
-    display: flex;
-    /* align-items: center; */
-    background-color: #515050;
+    background-color: #333;
     color: white;
     padding: 10px 0;
-    height: 50px;
 }
 
 .navbar-container {
@@ -45,41 +42,40 @@ body {
     font-size: 1em;
 }
 
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #4595df;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
 .container {
     width: 80%;
-    margin: 0 auto;
-    padding: 20px;
+    margin: 20px auto;
 }
 
 h1 {
     text-align: center;
 }
 
-.search-bar {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.search-bar input {
-    width: 300px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.search-bar button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #3d82db;
-    color: white;
-    cursor: pointer;
-    margin-left: 10px;
-    border-radius: 4px;
-}
-
 .cards-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5,1fr );
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -93,6 +89,12 @@ h1 {
     padding: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .card h2 {
@@ -115,4 +117,76 @@ h1 {
     color: white;
     cursor: pointer;
     border-radius: 4px;
+}
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-menu li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .search-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-bar input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .search-bar button {
+        width: 100%;
+    }
+
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-brand {
+        font-size: 1.2em;
+    }
+
+    .navbar-menu a {
+        font-size: 0.9em;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .footer-container {
+        width: 90%;
+    }
 }

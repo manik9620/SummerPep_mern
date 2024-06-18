@@ -7,8 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const query = searchInput.value;
     fetchData(query);
   });
-
-  // Fetch data with optional search query
+    
   function fetchData(query = "") {
     const apiUrl = query
       ? `https://dummyjson.com/products/search?q=${query}`
