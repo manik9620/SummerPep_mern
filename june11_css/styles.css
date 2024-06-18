@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.parent{
+    background-color: aquamarine;
+    padding: 24px;
+}
+
+.child{
+    background-color: aliceblue;
+    padding: 24px;
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .parent{
+        font-size: larger;
+        background-color: aquamarine;
+        padding: 12px;
+    }
+    
+    .child{
+        background-color: rgb(65, 172, 93);
+        padding: 12px;
+    }
+  }
+
+  @media only screen and (max-width: 300px) {
+    
+    .parent{
+        font-size: larger;
+        background-color: rgb(255, 127, 255);
+        padding: 12px;
+        
+    }
+    
+    .child{
+        background-color: rgb(163, 234, 77);
+        padding: 12px;
+       
+    }
+  }
