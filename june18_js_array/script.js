@@ -1,4 +1,4 @@
-const pr=fetch('https://dummyjson.com/products');
+const pr=fetch('https://dummyjson.com/quotes');
 
 pr.then((res)=>{
     const pr2=res.json();
@@ -14,7 +14,7 @@ pr.then((res)=>{
 const main=document.getElementById('root');
 
 function createUI(data){
-    const products=data.products;
+    const products=data.quotes;
 
     main.innerHTML=""
     for(let i=0;i<products.length;i++){
@@ -25,9 +25,9 @@ function createUI(data){
         main.appendChild(newCard);
         newCard.innerHTML=`
         <div class="products">
-            <h3>${products[i].title}</h3>
-            <img src="${products[i].thumbnail}"></img>
-            <p>${products[i].price}</p>
+            <h3>${products[i].author}</h3>
+            
+            <p>${products[i].quote}</p>
         </div>`
     }
 }
