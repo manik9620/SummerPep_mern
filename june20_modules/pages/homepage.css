@@ -1,0 +1,14 @@
+nav{
+    height: 10vh;
+    background-color: #c49d9d;
+}
+
+main{
+    height: 80vh;
+    background-color: aquamarine;
+}
+
+footer{
+    height: 10vh;
+    background-color: bisque;
+}
