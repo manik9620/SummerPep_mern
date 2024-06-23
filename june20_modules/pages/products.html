@@ -13,9 +13,22 @@
         font-family: "Poppins", sans-serif;
       }
 
-      h1{
-        text-align: center;
+      nav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: black;
+      }
+
+      nav a{
+        width: 10vw;
+        color: white;
+        text-decoration: none;
+      }
+
+      nav h1 {
+        width: 80vw;
+        text-align: center;
         color: white;
         height: 10vh;
         padding: 10px;
@@ -71,7 +84,6 @@
         height: 10vh;
         text-align: center;
       }
-
 
       /* Responsive for tablets (768px) */
       @media (max-width: 768px) {
@@ -129,11 +141,12 @@
   </head>
 
   <body>
-   <h1>Products Information</h1>
+    <nav>
+      <a href="/">Back</a>
+      <h1>Products Information</h1>
+    </nav>
+
     <main>$PRODUCTS$</main>
-    <footer>
-        &copy; 2024 Products App. All rights reserved.
-      
-    </footer>
+    <footer>&copy; 2024 Products App. All rights reserved.</footer>
   </body>
 </html>
