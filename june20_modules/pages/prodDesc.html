@@ -1,13 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <main>
-        $VIEW$
-    </main>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Description</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,800&display=swap");
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: "Poppins", sans-serif;
+        background: #f4f4f4;
+      }
+
+      .container {
+        position: relative;
+        display: flex;
+        /* flex-wrap: wrap; */
+        justify-content: center;
+        align-items: center;
+        width: 900px;
+        height: 600px;
+        background: #fff;
+        margin: 20px;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .left {
+        height: 100%;
+        width: 50%;
+        background-color: black;
+
+      }
+
+      .left img {
+        width: 90%;
+        height: 90%;
+        text-align: center;
+        padding: 50px 10px;
+        /* border: 2px solid green; */
+      }
+
+      .right {
+        height: 100%;
+        width: 50%;
+        text-align: center;
+      }
+      .right h3{
+        font-size: 40px;
+        padding: 20px;
+        line-height: 0.9;
+        font-weight: 900;
+      }
+
+      .right p{
+        color: rgb(145, 145, 145);
+        padding: 5px 20px;
+        margin-left: 20px;
+        text-align: start;
+      }
+
+      .right h2{
+        font-size: 40px;
+        margin: 20px;
+        font-weight: 900;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    $VIEW$
+  </body>
 </html>
