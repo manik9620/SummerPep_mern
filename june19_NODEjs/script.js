@@ -25,21 +25,21 @@
 
 
 ////shallow copy using spread opreator
-// const s1={
-//          name:"Manik",
-//          rollno:"19",
-//          city:"Delhi",
-//      hobbies:['printing','reading','playing'],
-//      }
-//      const s2=s1;
-//      const s3={...s1};
-//      s2.name='aman';
-//      s2.hobbies[0]='aman';
+const s1={
+         name:"Manik",
+         rollno:"19",
+         city:"Delhi",
+     hobbies:['printing','reading','playing'],
+     }
+    //  const s2=s1;
+     const s3={...s1};
+     s3.name='aman';
+     s3.hobbies[0]='aman';
 
 
-//      console.log(s1);
+     console.log(s1);
 //      console.log(s2);
-//      console.log(s3);
+     console.log(s3);
     
 
 // //rest operator
