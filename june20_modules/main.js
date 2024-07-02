@@ -66,6 +66,11 @@ const app = http.createServer(async (req, res) => {
         }
         break;
       }
+      // case "/products.css":{
+      //   const bf = await fsPromises.readFile("./pages/products.css");
+      //   res.end(bf);
+      //   break;
+      // }
       default: {
         res.writeHead(404, { "Content-Type": "text/html" });
         res.end("<h2>Oops! Page not found...</h2>");

@@ -1,5 +1,7 @@
 {
-  
+  "scripts": {
+    "start": "nodemon main.js"
+  },
 
   "dependencies": {
     "nodemon": "^3.1.4"
