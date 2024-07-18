@@ -19,7 +19,7 @@ const SearchPage = (props) => {
     };
 
     async function getData() {
-        const response = await fetch(`http://dummyjson.com/products/search?q=${searchtext}`);
+        const response = await fetch(`https://dummyjson.com/products/search?q=${searchtext}`);
         const data = await response.json();
         setProducts(data.products);
     }
