@@ -1,20 +1,24 @@
 {
-  "name": "july3_react",
+  "name": "frontend",
   "version": "1.0.0",
   "description": "",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx parcel index.html"
+    "start": "parcel index.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.6",
+    "axios": "^1.7.2",
+    "cloudinary": "^2.3.0",
     "parcel": "^2.12.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-icons": "^5.2.1",
-    "react-router-dom": "^6.24.1"
+    "react-redux": "^9.1.2",
+    "react-router-dom": "^6.25.1"
   },
   "devDependencies": {
     "process": "^0.11.10"
