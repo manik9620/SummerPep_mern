@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import useSignup from "../hooks/useSignup";
+import { Link } from "react-router-dom";
+
 
 const signupPage = () => {
   const loginPageStyles = {
@@ -27,17 +29,20 @@ const signupPage = () => {
   };
 
   return (
-    <div style={loginPageStyles}>
+    <div className="signup-page-container">
       <h1>Sign Up</h1>
+      <p>Already have an account? <Link to="/login">Login</Link></p>
       <input
         type="text"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        placeholder="Enter you email..."
       />
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        placeholder="Enter you password..."
       />
       <button onClick={handleSubmit}>Signup</button>
     </div>

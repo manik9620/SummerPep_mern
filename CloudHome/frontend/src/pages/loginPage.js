@@ -1,22 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import useLogin from "../hooks/useLogin";
+import { Link } from "react-router-dom";
 
 const loginPage = () => {
-  const loginPageStyles = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "24px",
-    margin: "auto",
-    padding: "24px",
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login } = useLogin();
+
+  const handleSubmit = () => {
+    const validation = true;
+    if (validation) {
+      login({ email, password });
+    } else {
+      alert("validation failed");
+    }
   };
 
   return (
-    <div style={loginPageStyles}>
-      <h1>Log In</h1>
-      <input type="text" />
-      <input type="password" />
-      <button>Login</button>
+    <div className="login-page-container">
+      <h1>Login to your account</h1>
+      <p>
+        Don't have an account yet? <Link to="/signup">Signup</Link>
+      </p>
+
+      <input
+        type="text"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Enter you email..."
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Enter you password..."
+      />
+      <button onClick={handleSubmit}>Login</button>
     </div>
   );
 };
