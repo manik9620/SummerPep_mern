@@ -1,11 +1,11 @@
-*{
+* {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-style: normal;
 }
 
 button {
-  background-color: rgb(175, 3, 175);
+  background-color: rgb(123, 92, 255);
   padding: 13px 20px;
   color: white;
   font-weight: 400;
@@ -39,7 +39,7 @@ button:hover {
 }
 .login-page-container a {
   text-decoration: none;
-  color: rgb(175, 3, 154);
+  color: rgb(123, 92, 255);
 }
 .login-page-container input {
   padding: 12px;
@@ -68,7 +68,7 @@ button:hover {
   }
   a {
     text-decoration: none;
-    color: rgb(175, 3, 154);
+    color: rgb(123, 92, 255);
   }
   input {
     padding: 12px;
@@ -110,7 +110,6 @@ button:hover {
     height: 55px;
     width: 24px;
     background-color: rgb(162, 210, 213);
-    ;
   }
 
   .c1 {

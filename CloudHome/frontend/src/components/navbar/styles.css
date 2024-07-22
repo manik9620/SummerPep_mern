@@ -7,3 +7,12 @@
     color: white;
 }
 
+.navbar-left-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-left-item img{
+    width: 60px;
+}
