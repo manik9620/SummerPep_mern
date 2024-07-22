@@ -13,21 +13,19 @@ const OtpPage = () => {
 
   const handleSubmit = async () => {
     if (otp.length < 4) {
-      toast.error("Invalid OTP")
+      toast.error("Invalid OTP");
     } else {
       const num = parseInt(otp);
       if (num >= 1000 && num <= 9999) {
-        const result = await verifyOtp( otp);
-        if (result && result.status === "success") {
-          toast.success("OTP verified successfully")
-        } else {
-          toast.error("OTP verification failed")
-        }
-      } else {
-        toast.error("Invalid OTP. OTP must be Number");
+        toast.info(`You have entered ${num}`);
+        verifyOtp(num);
+      }
+      else{
+        toast.error("Invalid OTP")
       }
     }
   };
+
   useEffect(() => {
     generateNewOtp();
   }, []);
@@ -49,9 +47,7 @@ const OtpPage = () => {
           <div className="otp-column c3" />
           <div className="otp-column c4" />
         </div>
-        <button onClick={handleSubmit} >
-          Verify
-        </button>
+        <button onClick={handleSubmit}>Verify</button>
         {/* {error && <p>{error}</p>} */}
       </div>
     </>

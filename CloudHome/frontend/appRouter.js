@@ -12,6 +12,8 @@ import { useSelector } from "react-redux";
 
 const AppRouter = () => {
   const { isAuthorized, isEmailVerified } = useSelector((e) => e.auth);
+  // const isAuthorized = true;
+  // const isEmailVerified = true;
 
   const router = createBrowserRouter([
     {

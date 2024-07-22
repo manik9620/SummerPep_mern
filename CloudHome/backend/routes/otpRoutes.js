@@ -6,6 +6,6 @@ const otpRouter = express.Router();
 
 
 otpRouter.get("/generate", generateOtp);
-otpRouter.post("/verify-otp", verifyOtp);
+otpRouter.post("/verify", verifyOtp);
 
 module.exports = otpRouter;

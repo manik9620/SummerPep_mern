@@ -5,17 +5,7 @@ import { toast } from "react-toastify";
 
 
 const signupPage = () => {
-  const loginPageStyles = {
-    border:"1px solid slategray",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "24px",
-    margin: "auto",
-    padding: "24px",
-    width:"25%"
-  };
+ 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signup } = useSignup();
@@ -31,6 +21,7 @@ const signupPage = () => {
   };
 
   return (
+    <div className="signup-page">
     <div className="signup-page-container">
       <h1>Sign Up</h1>
       <p>Already have an account? <Link to="/login">Login</Link></p>
@@ -47,6 +38,7 @@ const signupPage = () => {
         placeholder="Enter you password..."
       />
       <button onClick={handleSubmit}>Signup</button>
+    </div>
     </div>
   );
 };

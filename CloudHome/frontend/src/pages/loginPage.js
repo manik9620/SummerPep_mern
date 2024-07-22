@@ -18,6 +18,7 @@ const loginPage = () => {
   };
 
   return (
+    <div className="login-page">
     <div className="login-page-container">
       <h1>Login to your account</h1>
       <p>
@@ -37,6 +38,7 @@ const loginPage = () => {
         placeholder="Enter you password..."
       />
       <button onClick={handleSubmit}>Login</button>
+    </div>
     </div>
   );
 };

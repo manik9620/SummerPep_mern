@@ -70,6 +70,7 @@ const login = async (req, res) => {
         message: "Enter valid Email and password",
         data: [],
       });
+      return ;
     }
 
     const user = await getUserByEmail(email);
@@ -79,6 +80,7 @@ const login = async (req, res) => {
         message: "User not found",
         data: [],
       });
+      return ;
     }
 
     const isCorrect = await user.verifyPassword(password, user.password);
@@ -88,6 +90,7 @@ const login = async (req, res) => {
         message: "Invalid password",
         data: [],
       });
+      return ;
     }
     res.status(200);
     res.json({

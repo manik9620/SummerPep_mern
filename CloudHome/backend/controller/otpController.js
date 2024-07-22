@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 const OtpModel = require("../model/otpSchema");
+const UserModel = require("../model/userModel");
 
 const sendOTPMail = async (email, otp) => {
   try {
@@ -45,10 +46,6 @@ const sendOTPMail = async (email, otp) => {
 const generateOtp = async (req, res) => {
   try {
     const { email, _id } = req.user;
-
-    const otp = Math.floor(1000 + Math.random() * 9000);
-    const isMailSent = await sendOTPMail(email, otp);
-
     const sentOTPMail = await OtpModel.findOne({
       email,
       createdAt: {
@@ -68,6 +65,10 @@ const generateOtp = async (req, res) => {
       });
       return;
     }
+
+    const otp = Math.floor(1000 + Math.random() * 9000);
+    const isMailSent = await sendOTPMail(email, otp);
+
 
     if (!isMailSent) {
       res.status(500);
@@ -110,40 +111,39 @@ const verifyOtp = async (req, res) => {
   try {
     const { email } = req.user;
     const { otp } = req.body;
+
+    console.log("email---", email);
+    console.log("otp---", otp);
+    const restrictedTimeForOTP = 10 * 60 * 1000;
     console.log("email------------", email);
     console.log("otp------------", otp);
 
-    // Finding the OTP entry in the database
-    const otpEntry = await OtpModel.findOne({ email }).sort({ createdAt: -1 });
+    const sentOTPMail = await OtpModel.findOne({
+      email,
+      createdAt: {
+        $gte: Date.now() - restrictedTimeForOTP,
+      },
+    });
 
-    if (!otpEntry) {
-      return res.status(400).json({
+    if (!sentOTPMail) {
+      return res.status(404).json({
         status: "fail",
-        message: "Invalid OTP or email",
+        message: "Verification failed , Please generate new OTP",
+        data: {},
       });
     }
 
-    // Check if the OTP has expired
-    if (otpEntry.expiresAt < Date.now()) {
-      return res.status(400).json({
-        status: "fail",
-        message: "OTP has expired",
-      });
-    }
+    const hashedOtp = sentOTPMail.otp;
+    const isCorrect = await sentOTPMail.verifyOtp(otp + "", hashedOtp);
 
-    // Verify the OTP
-    const isMatch = await otpEntry.verifyOtp(otp.toString(), otpEntry.otp);
-
-    if (!isMatch) {
+    if (!isCorrect) {
       return res.status(400).json({
         status: "fail",
         message: "Invalid OTP",
       });
     }
 
-    // Mark the OTP as verified
-    otpEntry.isVerified = true;
-    await otpEntry.save();
+    await UserModel.findOneAndUpdate({ email }, { isEmailVerified: true });
 
     res.status(200).json({
       status: "success",

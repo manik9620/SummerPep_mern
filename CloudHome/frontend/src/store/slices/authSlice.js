@@ -40,10 +40,25 @@ const authSlice = createSlice({
       state.isEmailVerified = false;
       localStorage.removeItem("userInfo");
     },
+    emailVerified: (state) => {
+      state.isEmailVerified = true;
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({
+          user: {
+            email: state.email,
+            name: state.name,
+            isEmailVerified: state.isEmailVerified,
+            _id: state.userId,
+          },
+          token: state.token,
+        })
+      );
+    },
   },
 });
 
-export const { appLogin, appLogout } = authSlice.actions;
+export const { appLogin, appLogout, emailVerified } = authSlice.actions;
 
 const authReducer = authSlice.reducer;
 export default authReducer;
