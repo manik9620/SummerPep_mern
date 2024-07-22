@@ -1,30 +1,37 @@
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const useGenerateNewOtp = () => {
-    const { token } = useSelector((e) => e.auth);
+  const { token } = useSelector((e) => e.auth);
 
-    const generateNewOtp = async () => {
-        try {
-            const res = await fetch(`${process.env.BACKEND_URL}/api/v1/otp/generate`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-
-            });
-            const data = await res.json();
-
-            if (data.status === "success") {
-                alert(data.message);
-            } else {
-                alert(data.message);
-            }
-        } catch (err) {
-            alert("Error: " + err.message);
-
+  const generateNewOtp = async () => {
+    try {
+      const res = await fetch(
+        `${process.env.BACKEND_URL}/api/v1/otp/generate`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-    };
+      );
+      const data = await res.json();
 
-    return { generateNewOtp };
+      if (data.status === "success") {
+        toast.success(data.message);
+      } 
+      else if(data.status === "already_sent"){
+        toast.warning(data.message);
+
+      }
+      else {
+        toast.success(data.message);
+      }
+    } catch (err) {
+      toast.error("Error: " + err.message);
+    }
+  };
+
+  return { generateNewOtp };
 };
 
 export default useGenerateNewOtp;

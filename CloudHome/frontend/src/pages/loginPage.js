@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useLogin from "../hooks/useLogin";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const loginPage = () => {
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ const loginPage = () => {
     if (validation) {
       login({ email, password });
     } else {
-      alert("validation failed");
+      toast.error("validation failed");
     }
   };
 

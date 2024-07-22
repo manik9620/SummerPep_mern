@@ -86,7 +86,7 @@ button:hover {
   flex-direction: column;
   margin: 24px;
   padding: 24px;
-  background-color: blanchedalmond;
+  background-color: rgb(162, 210, 213);
   gap: 24px;
   border-radius: 8px;
 }
@@ -107,9 +107,10 @@ button:hover {
   .otp-column {
     position: absolute;
     top: 0;
-    height: 44px;
+    height: 55px;
     width: 24px;
-    background-color: blanchedalmond;
+    background-color: rgb(162, 210, 213);
+    ;
   }
 
   .c1 {

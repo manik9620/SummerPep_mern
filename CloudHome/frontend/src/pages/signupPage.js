@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useSignup from "../hooks/useSignup";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 const signupPage = () => {
@@ -24,6 +25,7 @@ const signupPage = () => {
     if (validation) {
       signup({ email, password });
     } else {
+      toast.error("Invalid email or password"); 
       alert("validation failed");
     }
   };

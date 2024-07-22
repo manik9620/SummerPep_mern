@@ -1,6 +1,7 @@
 // import { useNavigate } from "react-router-dom";  
 import { useDispatch } from "react-redux";
 import { appLogin } from "../store/slices/authSlice";
+import { toast } from "react-toastify";
 
 const useLogin = () => {
   // const navigate = useNavigate();
@@ -19,13 +20,14 @@ const useLogin = () => {
       const data = await res.json();
       console.log(data);
       if (data.status === "success") {
-        // navigate("/");
         dispatch(appLogin(data));
+        toast.success("Login Successfully");
       } else {
-        alert(data.message);
+        toast.error(data.message);
+        
       }
     } catch (err) {
-      alert("Signup error: " + err.message);
+      toast.error(err.message)
     }
   };
   return { login };
