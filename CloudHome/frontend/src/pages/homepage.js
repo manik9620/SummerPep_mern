@@ -1,18 +1,52 @@
 import React, { useEffect, useState, useRef } from "react";
 import Navbar from "../components/navbar";
 import folderIcon from "../public/assests/folder.png";
-import fileIcon from "../public/assests/word.png";
+import pdfIcon from "../public/assests/file.png";
+import jpgIcon from "../public/assests/jpg-file.png";
+import jpegIcon from "../public/assests/jpeg.png";
+import pngIcon from "../public/assests/png.png";
+import docxIcon from "../public/assests/docx.png";
+import xlsxIcon from "../public/assests/xlsx.png";
+import txtIcon from "../public/assests/txt-file.png";
+import pptIcon from "../public/assests/ppt.png";
 import useCreateFolder from "../hooks/useCreateFolder";
 import useGetFileFolders from "../hooks/useGetFileFolders";
 import useUploadFile from "../hooks/useUploadFile";
+import useDeleteFolder from "../hooks/useDeleteFolder";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import ConfirmDialog from "../components/ConfirmDialog";
+
+const fileIcons = {
+  folder: folderIcon,
+  pdf: pdfIcon,
+  jpg: jpgIcon,
+  jpeg: jpegIcon,
+  png: pngIcon,
+  docx: docxIcon,
+  xlsx: xlsxIcon,
+  txt: txtIcon,
+  ppt: pptIcon,
+  // default: fileIcons
+};
+
+const getFileIcon = (fileName, fileType) => {
+  if (fileType === "folder") {
+    return fileIcons.folder;
+  }
+  const extension = fileName.split('.').pop().toLowerCase();
+  return fileIcons[extension] || fileIcons.default;
+};
 
 const Homepage = () => {
   const [newFolder, setNewFolder] = useState("");
   const createFolderRef = useRef(null);
   const [showCreateFolder, setShowCreateFolder] = useState(false);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [folderToDelete, setFolderToDelete] = useState(null);
   const { createFolder } = useCreateFolder();
-  const { getFileFolders, fileFolders } = useGetFileFolders();
+  const { getFileFolders, fileFolders, setFileFolders } = useGetFileFolders();
+  const { deleteFolder } = useDeleteFolder();
   const [folderStructure, setFolderStructure] = useState([
     { _id: null, name: "Cloud Home" },
   ]);
@@ -88,6 +122,28 @@ const Homepage = () => {
     }
   };
 
+  const handleDeleteFolder = (folderId) => {
+    setShowConfirmDialog(true);
+    setFolderToDelete(folderId);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (folderToDelete) {
+      const success = await deleteFolder(folderToDelete);
+      if (success) {
+        const updatedFileFolders = fileFolders.filter(folder => folder._id !== folderToDelete);
+        setFileFolders(updatedFileFolders);
+      }
+    }
+    setShowConfirmDialog(false);
+    setFolderToDelete(null);
+  };
+
+  const handleCancelDelete = () => {
+    setShowConfirmDialog(false);
+    setFolderToDelete(null);
+  };
+
   return (
     <div className={`app-container ${showCreateFolder ? "backdrop" : ""}`}>
       <Navbar />
@@ -118,11 +174,17 @@ const Homepage = () => {
                   onDoubleClick={() => handleDoubleClick(elem)}
                 >
                   <img
-                    src={elem.type === "folder" ? folderIcon : fileIcon}
+                    src={getFileIcon(elem.name, elem.type)}
                     alt={elem.name}
                     className="folder-icon"
                   />
+                  
                   <p>{elem.name}</p>
+                  {elem.type === "folder" && (
+                    <button onClick={() => handleDeleteFolder(elem._id)}>
+                       <RiDeleteBin6Line />
+                    </button>
+                  )}
                 </div>
               ))
             )}
@@ -138,16 +200,23 @@ const Homepage = () => {
             placeholder="Folder Name"
           />
           <div className="create-folder-container-buttons">
-          <button
-            onClick={() => {
-              setShowCreateFolder(false);
-            }}
-          >
-            Cancel
-          </button>
+            <button
+              onClick={() => {
+                setShowCreateFolder(false);
+              }}
+            >
+              Cancel
+            </button>
             <button onClick={handleCreateFolder}>Create</button>
           </div>
         </div>
+      )}
+      {showConfirmDialog && (
+        <ConfirmDialog
+          message="Are you sure you want to delete this folder?"
+          onConfirm={handleConfirmDelete}
+          onCancel={handleCancelDelete}
+        />
       )}
     </div>
   );

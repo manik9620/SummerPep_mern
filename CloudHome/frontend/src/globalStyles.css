@@ -44,6 +44,82 @@ button:hover {
   z-index: 998;
 }
 
+.login-page {
+  height: 100vh;
+  background: url(./public/assests/loginbg.png);
+  contain: content;
+  object-fit: cover;
+} 
+
+.login-page-container {
+  background-color: white;
+  display: flex;
+  border: 1px solid slategray;
+  border-radius: 10px;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  text-align: center;
+  gap: 24px;
+  margin: auto;
+  padding: 24px;
+  width: 25%;
+  margin-top: 8rem;
+}
+.login-page-container p {
+  font-size: 20px;
+}
+.login-page-container a {
+  text-decoration: none;
+  color: rgb(175, 3, 154);
+}
+.login-page-container input {
+  padding: 12px;
+  font-size: 15px;
+  background: none;
+  border-radius: 8px;
+  border: 1px solid slategray;
+  /* background-color: rgb(237, 219, 237); */
+}
+
+
+.signup-page{
+  height: 100vh;
+  background: url(./public/assests/loginbg.png);
+  contain: content;
+  object-fit: cover;
+}
+
+.signup-page-container {
+  background-color:white ;
+  display: flex;
+  border: 1px solid slategray;
+  border-radius: 10px;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  text-align: center;
+  gap: 24px;
+  margin: auto;
+  padding: 24px;
+  width: 25%;
+  margin-top: 8rem;
+  p {
+    font-size: 20px;
+  }
+  a {
+    text-decoration: none;
+    color: rgb(175, 3, 154);
+  }
+  input {
+    padding: 12px;
+    font-size: 15px;
+    background: none;
+    border-radius: 8px;
+    border: 1px solid slategray;
+  }
+}
+
 .homepage-main-container {
   background-color: rgb(248,250,253);
   display: flex;
@@ -202,6 +278,9 @@ button:hover {
 /* Folder list styles */
 .folders-container {
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
 }
 
 .folders-container h2 {
@@ -211,11 +290,11 @@ button:hover {
 
 .folder {
   display: flex;
+  flex-direction: column;
   align-items: center;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 10px;
-  margin: 10px 0;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -225,13 +304,27 @@ button:hover {
 }
 
 .folder-icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
+  width: 48px; /* Increase the size of the icon */
+  height: 48px;
+  margin-bottom: 10px;
 }
 
 .folder p {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px; /* Adjusted the font size */
   color: #333;
+}
+
+.folder button {
+  background-color: red;
+  padding: 5px 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+}
+
+.folder button:hover {
+  background-color: darkred;
 }
