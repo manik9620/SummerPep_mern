@@ -1,10 +1,12 @@
-const express=require("express");
-const { createFolder } = require("../controller/folderController");
+const express = require("express");
+const {
+  createFolder,
+  deleteFolder,
+} = require("../controller/folderController");
 
-const folderRouter=express.Router();
+const folderRouter = express.Router();
 
-folderRouter.post("/create",createFolder);
+folderRouter.post("/create", createFolder);
+folderRouter.delete("/delete/:id", deleteFolder);
 
-
-
-module.exports=folderRouter;
+module.exports = folderRouter;

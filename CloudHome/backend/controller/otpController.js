@@ -115,8 +115,7 @@ const verifyOtp = async (req, res) => {
     console.log("email---", email);
     console.log("otp---", otp);
     const restrictedTimeForOTP = 10 * 60 * 1000;
-    console.log("email------------", email);
-    console.log("otp------------", otp);
+    
 
     const sentOTPMail = await OtpModel.findOne({
       email,

@@ -29,7 +29,7 @@ const verifyToken = (req, res, next) => {
       res.status(401).json({
         status: "fail",
         message: "Unauthorized",
-        data: {},
+        data: {}
       });
     } else {
       req.user = { email: decoded.data.email, _id: decoded.data._id };
