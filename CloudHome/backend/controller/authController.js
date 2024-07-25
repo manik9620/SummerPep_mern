@@ -9,7 +9,7 @@ const getUserByEmail = async (email) => {
 const generateJWTToken = (obj) => {
   const token = jwt.sign(
     {
-      exp: Math.floor(Date.now()/1000)+(60*60), // Date.now returns time in miliseconds from 1 Jan 1970 
+      exp: Math.floor(Date.now()/1000)+(60*60*24*7), // Date.now returns time in miliseconds from 1 Jan 1970 
       data: obj,
     },
     process.env.JWT_SECRET_KEY
